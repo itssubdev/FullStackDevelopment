@@ -1,0 +1,63 @@
+
+/* what it mean  */
+/* h2 ->selector */
+/* {
+    properties : value
+} 
+
+/* selector */
+/* 1. * -> universal selector */
+*{
+    background-color: black;
+    color: white;
+}
+/* 2. element selector */
+h2{
+    text-align: right;
+    background-color: aqua;
+    color: peru;
+}
+/* 3. class selector  */
+.bye{
+    background-color: red;
+}
+/* 4. id selector in css */
+#one{
+    background-color: aliceblue;
+    /* rgb(0- 255) */
+    color: rgb(255,0,255);
+}
+/* group selector */
+h1, h2, h3, h4, h5, h6{
+    font-size: 25px;
+
+}
+/* descedent selector */
+div p{
+    font-weight: 700;
+    letter-spacing: 5px;
+    word-spacing: 5px;
+    text-align: justify;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+/* :, :: */
+/* pseudo classes */
+p:hover{
+    background-color: aqua;
+}
+/* hover, link, active, :nth-child,  */
+/* pseudo element */
+p::before{
+    content: "hello hi bye";
+    color: red;
+}
+p::after{
+    content: "hello hi bye";
+    color: red;
+}
+#one{
+    background-color: aliceblue;
+    /* rgb(0- 255) */
+    color: rgb(13, 0, 255);
+}

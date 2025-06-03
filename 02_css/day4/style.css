@@ -1,0 +1,62 @@
+/* shadow -> text, box */
+.text{
+    text-shadow: 5px 5px 1px #0ff000;
+}
+.box{
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(to bottom, 
+    #ff00ff, #0b4f0b, #ffff00);
+    box-shadow: -10px -10px 3px #ff00ff;
+}
+
+.ov{
+    width: 150px;
+    height: 150px;
+    background-color: aquamarine;
+    overflow: hidden;
+    overflow: auto;
+    overflow: scroll;
+}
+/* float -> float: left and float: right */
+img{
+    width: 150px;
+    height: 150px;
+}
+.floats p{
+    text-align: justify;
+}
+.floats p img{
+    float: left;
+    float: right;
+    float: inline-start;
+    float: inline-end;
+}
+.parent{
+    width: 85vw;
+    margin: 0 auto;
+}
+.child{
+    width: 33.33%;
+}
+.child h5{
+   color: rgb(59, 59, 59);
+   font-size: 15px;
+}
+.child h2{
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+}
+.child p{
+    color: rgb(34, 33, 33);
+    font-size: 16px;
+}
+.three{
+    float: right;
+}
+.one{
+    float: left;
+}
+.two{
+    float: left;
+}

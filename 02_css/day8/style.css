@@ -1,0 +1,33 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+.parent{
+    height: 100vh;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.child{
+    width: 100px;
+    height: 100px;
+    background-color: aqua;
+    border-radius: 50px;
+    position: absolute;
+    animation-name: shishir;
+    animation-timing-function: linear;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+@keyframes shishir {
+    0%, 100%{
+        top: 600px;
+    }
+    50%{
+        top: 0px;
+    }
+    
+}

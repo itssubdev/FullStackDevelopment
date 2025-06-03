@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body class="font-[Roboto] w-[80vw] mx-auto">
+    <h1 class="text-center text-3xl font-bold">Todays Weater</h1>
+    <form>
+        <input type="text" id="search" placeholder="Search" class="w-[80vw] mx-auto block border-2 border-black py-2 px-4 rounded-2xl mt-4">
+        <button class="bg-green-500 block mt-4 text-white px-4 py-2 border-2 border-green-500  hover:bg-green-900 hover:border-green-900 rounded-2xl" id="btn" type="submit">Search</button>
+    </form>
+    <div class="w-[80vw] container" id="grid">
+        <h1> Weather Condition: <span id="condition"></span></h1>
+        <img src="" id="img">
+        <h1>Temperature: <span id="temp"></span></h1>
+        <h1>Name: <span id="name"></span></h1>
+        <h1>humidity: <span id="humidity"></span></h1>
+    </div>
+    <script>
+        let gridslayout = document.getElementById("grid");
+        let search = document.getElementById("search");
+        let btn = document.getElementById("btn");
+        let condition = document.getElementById("condition");
+        let img = document.getElementById("img");
+        let temp = document.getElementById("temp");
+        let name = document.getElementById("name");
+        let humidity = document.getElementById("humidity");
+
+        btn.addEventListener("click", (e)=>{
+            e.preventDefault();
+
+            let inputValue = search.value;
+            fetch(`http://api.weatherapi.com/v1/current.json?key=9c9940e9e1bf4e4ca6013952243112&q=${inputValue}&aqi=yes`)
+            .then((res)=> res.json())
+            .then((data)=>{
+                console.log(data);
+                condition.innerHTML = data.current.condition.text;
+                img.src = data.current.condition.icon;
+                temp.innerHTML = data.current.temp_c;
+                name.innerHTML = data.location.name;
+                humidity.innerHTML = data.current.humidity;
+            }).catch((e)=>{
+                console.log(e.message);
+            })
+            input.value = "";
+        })
+    </script>
+</body>
+</html>

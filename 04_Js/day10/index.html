@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="title">Hello world</h1>
+    <h2 id="tit">Hello world</h1>
+    <h3 id="one">hello bye</h3>
+    <img id="hello" alt="no image">
+    <a href="www.google.com" id="home">GO home</a>
+    <ol id="list">
+    </ol>
+    <button id="btn">Click</button>
+    <script src="script.js"></script>
+    <script>
+        document.getElementById("title").innerHTML = "<p>hello from script h1</p>"
+        document.getElementById("tit").textContent = "<p>hello from script</p>"
+        // document.getElementById("one").outerText = "<p>hello from script</p>"
+        let ab = document.getElementById("hello")
+        ab.setAttribute("src", "https://images.unsplash.com/photo-1748223341494-86fb07ff110b?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyfHx8ZW58MHx8fHx8")
+        let ab1 = document.getElementById("home");
+        ab1.removeAttribute("href")
+        // add element in ol -> li
+        let ol = document.getElementById("list");
+        let li = document.createElement("li");
+        let text = document.createTextNode("list 1");
+        li.appendChild(text);
+        ol.appendChild(li);
+
+        // event listiner
+        let btn = document.getElementById("btn");
+        // btn.addEventListener("click", ()=>{
+        //     alert("clicked")
+        // })
+        let one = document.getElementById("one");
+        one.setAttribute("style", "color:green")
+        btn.removeEventListener("click", ()=>{
+            alert("clicked")
+        })
+
+        
+
+
+    </script>
+</body>
+</html>

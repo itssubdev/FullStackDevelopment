@@ -1,0 +1,56 @@
+/* flex and grid -> parent level */
+/* .parent{
+    background-color: red;
+    display: flex;
+    height: 100vh;
+     justify-content: center;
+    justify-content: left;
+    justify-content: end;
+    justify-content: space-evenly;
+    justify-content: space-between;
+    justify-content: space-around;
+    align-items: center;
+    align-items: end;
+    gap: 100px;
+    flex-direction: column;
+    flex-direction: column-reverse;
+    flex-direction: row-reverse;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+img{
+    width: 250px;
+    height: 250px;
+}
+.child{
+    width: 300px;
+    height: 300px;
+    flex: 0;
+    background-color: aquamarine;
+}
+.childs{
+    width: 300px;
+    height: 300px;
+    flex: 2;
+    align-self: flex-start;
+    background-color: aquamarine;
+} */
+
+.parent{
+    height: 100vh;
+    background-color: yellow;
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap: 100px;
+    justify-content: space-around;
+    justify-items: center;
+}
+img{
+    width: 300px;
+    height: 300px;
+}
+.child{
+    width: 400px;
+    height: 400px;
+    background-color: red;
+}

@@ -1,0 +1,74 @@
+.mobile{
+    height: 100vh;
+    background: red;
+}
+.random{
+    height: 10vh;
+    background: rgb(245, 9, 186);
+    width: 100px;
+    border-radius: 50px;
+    /* position: relative;
+    left : 90%;
+    top: 90%; */
+    /* position: sticky;
+    top: 0px;
+    left: 0px; */
+    position: fixed;
+    top: 0px;
+    left: 0px
+}
+.mobiles{
+    height: 100vh;
+    position: relative;
+}
+img{
+    width: 300px;
+    height: 600px;
+    transform: rotate(180deg);
+}
+.one{
+    z-index: 0;
+}
+.two{
+    position: absolute;
+    top: 150px;
+    left: 150px;
+    z-index: 1;
+}
+.btn{
+    margin-top: 100px;
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 30px;
+    background-color: red;
+    color: white;
+    border: 2px solid rgb(0, 255, 55);
+    transition-duration: 2s;
+    transition-property: all;
+    transition-timing-function: linear;
+    transition-delay: 0.2s;
+    transition: all 2s linear 0.2s;
+}
+.btn:hover{
+    color:rgb(0, 255, 55);
+    background-color: white ;
+    border-color: red;
+}
+/* desktop */
+@media screen and (min-width: 1200px) {
+    .mobile{
+        background-color: yellow;
+    }
+}
+/* landscape mode */
+@media screen and (orientation: landscape) {
+    .mobile{
+        background-color: blue;
+    }
+}
+/* tablet */
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+    .mobile{
+        background-color: green;
+    }
+}

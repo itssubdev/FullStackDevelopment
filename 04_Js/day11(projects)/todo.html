@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body class="font-[Roboto]">
+    <div class="w-[80vw]  mx-auto grid grid-cols-4">
+        <form action="#">
+            <input type="text" placeholder="Enter your todo" class="col-span-3 border-2 border-green-500 p-2" id="todo">
+            <button id="btn" type="submit" class="bg-green-500 text-white px-4 py-2 border-2 border-green-500  hover:bg-green-900 hover:border-green-900 rounded-2xl">Add</button>
+        </form>
+        <ol id="ol"> 
+        </ol>
+    </div>
+    <script>
+        let todo = document.getElementById("todo");
+        let btn = document.getElementById("btn");
+        let ol = document.getElementById("ol");
+        btn.addEventListener("click", (e)=>{
+            e.preventDefault();
+            let li = document.createElement("li");
+            let text = document.createTextNode(todo.value);
+            li.appendChild(text);
+            ol.appendChild(li);
+            todo.value = "";
+        })
+    </script>
+    
+</body>
+</html>

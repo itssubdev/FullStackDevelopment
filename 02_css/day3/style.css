@@ -1,0 +1,55 @@
+/* content -> padding -> border -> margin */
+h1{
+    padding: 30px;
+    padding-top: 10px;
+    padding-right: 15px;
+    padding-bottom: 20px;
+    padding-left: 25px;
+    padding: 40px 10px;
+    padding: 40px 0px 30px 10px;
+    margin: 30px;
+    margin-top: 10px;
+    margin-right: 15px;
+    margin-bottom: 20px;
+    margin-left: 25px;
+    margin: 40px 10px;
+    margin: 40px 0px 30px 10px;
+    box-sizing: border-box;
+    border: 3px solid red;
+    border-width: 30px;
+    border-color: green;
+    border-style: dashed;
+    border-style: dotted;
+    border-style: double;
+    border-style: ridge;
+    border-top: 40px solid red;
+    border-radius: 50px;
+    border-top-left-radius: 5px;
+}
+/* measurement unit */
+/* px */
+p{
+    font-size: 32px;
+    font-size: 2em;
+    font-size: 2rem;
+    width: 100px;
+    width: 1200vw;
+    height: 100vh;
+    background-color: red;
+    width: 100%;
+}
+.btn1{
+    background-color: #ea4c89;
+    padding: 13px 20px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 15px;
+    text-decoration: none;
+    color: white;
+    border-color: #ea4c89;
+    font-weight: 500;
+
+}
+.btn1:hover{
+    background-color: #f9a7c6;
+}

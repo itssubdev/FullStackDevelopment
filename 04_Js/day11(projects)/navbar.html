@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body class="font-[Roboto]">
+  <header class="md:h-[85vh] relative top-0 left-0 
+  bg-[url('https://wp.w3layouts.com/ui-portfolio/wp-content/themes/ui-portfolio/assets/images/banner1.jpg')]
+   bg-no-repeat bg-center bg-cover before:content-[''] before:absolute before:top-0 before:left-0 before:h-full before:w-full
+  before:bg-[#03161a] before:opacity-90 before:z-[1] ">
+    <nav class="md:w-[70vw]  z-[2] h-20  mx-auto flex items-center justify-between sticky ">
+      <h1 class="text-3xl font-bold text-white"><span class="text-rose-500 italic">Purnika</span> Tamang</h1>
+      <div class="hidden md:block">
+        <ul class="flex text-white gap-5 text-lg font-semibold">
+          <li><a href="#" class="hover:text-red-900">Home</a></li>
+          <li><a href="#" class="hover:text-red-900"> About</a></li>
+          <li><a href="#" class="hover:text-red-900">Services</a></li>
+          <li><a href="#" class="hover:text-red-900">Education</a></li>
+          <li><a href="#" class="hover:text-red-900">Blog</a></li>
+          <li><a href="#" class="hover:text-red-900">Contact</a></li>
+          <li><a href="#" class="bg-green-500 text-white px-4 py-2 border-2 border-green-500  hover:bg-green-900
+            hover:border-green-900 rounded-2xl">Resume</a></li>
+        </ul>
+      </div>
+      <div class="md:hidden text-white text-2xl font-bold">
+       <i class="fa-solid fa-bars" id="bars"></i>
+      </div>
+    </nav>
+  </header>
+   <ul id="menu" class="md:hidden flex text-black flex-col items-center gap-5 text-lg 
+    font-semibold bg-red-100 pb-20 pt-10">
+          <li><a href="#" class="hover:text-red-900">Home</a></li>
+          <li><a href="#" class="hover:text-red-900"> About</a></li>
+          <li><a href="#" class="hover:text-red-900">Services</a></li>
+          <li><a href="#" class="hover:text-red-900">Education</a></li>
+          <li><a href="#" class="hover:text-red-900">Blog</a></li>
+          <li><a href="#" class="hover:text-red-900">Contact</a></li>
+          <li><a href="#" class="bg-green-500 text-black flex-col items-center px-4 
+            py-2 border-2 border-green-500  hover:bg-green-900
+            hover:border-green-900 rounded-2xl">Resume</a></li>
+    </ul>
+    <script>
+        let menu = document.getElementById("menu")
+        let bars = document.getElementById("bars")
+        bars.addEventListener("click", ()=>{
+            menu.classList.toggle("hidden")
+        })
+    </script>
+
+  
+</body>
+</html>

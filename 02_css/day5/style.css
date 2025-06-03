@@ -1,0 +1,27 @@
+a{
+    background-color: red;
+    display: block;
+    visibility: hidden;
+}
+
+.div{
+    height: 100vh;
+    background-image: url("https://images.unsplash.com/photo-1745428847642-34364849140e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwzfHx8ZW58MHx8fHx8");
+    background-position: bottom right;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    /* background: ; */
+}
+h1{
+    background-color: aqua;
+    display: inline;
+    display: inline-block;
+    display: none;
+    margin: 30px;
+}
+.child{
+    width: 33%;
+    display: inline-block;
+}

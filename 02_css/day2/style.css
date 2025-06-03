@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Coral+Pixels&display=swap');
+/*
+multi line 
+comment
+*/
+h1{
+    color: blue;
+}
+h2{
+    color: rgb(0, 0, 255);
+}
+
+h3{
+    color: rgba(0, 0, 255, 0.999);
+}
+
+h4{
+    color: #0000ff;
+}
+h5{
+    color: hsl(237, 100%, 54%);
+}
+.details{
+    font-size: 18px;
+    font-weight: 900;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    letter-spacing: 10px;
+    /* text-align: center ; */
+    /* text-align: justify ; */
+    text-decoration: underline;
+    text-transform: capitalize;
+    text-transform: lowercase;
+    text-transform: uppercase;
+    text-wrap: balance;
+    word-break: break-all;
+    word-wrap: break-word;
+    font-style: italic;
+    word-spacing: 10px;
+}
+@font-face {
+    font-family: "shishir";
+    src: url("./Whisper-Regular.ttf");
+}
+.one{
+    font-family: "Coral Pixels";
+}
+.two{
+    font-family: "shishir";
+}
+/*  */

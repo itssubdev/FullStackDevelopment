@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slider for image using js</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+    <div class="w-full h-[80vh]" id="slider">
+        <button  onclick="next()">
+            Next
+        </button>
+        <img src="" alt="" id="img" class="w-full h-full object-cover">
+        <button onclick="prev()">
+            Previous
+        </button>
+    </div>
+    <script>
+        let imgs = [
+            "https://images.unsplash.com/photo-1748520492292-a5f75429e948?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwzfHx8ZW58MHx8fHx8", 
+            "https://plus.unsplash.com/premium_photo-1734549547834-f38f7f6b295f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw1fHx8ZW58MHx8fHx8",
+            "https://images.unsplash.com/photo-1748630312862-fbbd301ed17f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxMHx8fGVufDB8fHx8fA%3D%3D",
+            "https://plus.unsplash.com/premium_photo-1731283203268-efaef04e8f80?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw5fHx8ZW58MHx8fHx8"
+        ];
+        img = document.getElementById("img");
+
+        currentindex = 0;
+        img.src = imgs[currentindex];
+        next = () => {
+            currentindex = (currentindex + 1) % imgs.length;
+            img.src = imgs[currentindex];
+        }
+        prev = () => {
+            currentindex = (currentindex - 1 + imgs.length) % imgs.length;
+            img.src = imgs[currentindex];
+        }
+    </script>
+
+</body>
+</html>

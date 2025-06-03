@@ -1,0 +1,116 @@
+:root{
+    --btn-color: rgb(229, 9, 20);
+    --btn-text-color: white;
+    --btn-transparent: transparent;
+}
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+.container{
+    width: 80vw;
+    margin: 0 auto;
+}
+a{
+    text-decoration: none;
+}
+
+/* header section */
+.mainheader{
+    height: calc(100vh - 100px);
+    background: url("https://assets.nflxext.com/ffe/siteui/vlv3/fa7be975-efc3-48c6-8188-f07fdd1aa476/web/NP-en-20250428-TRIFECTA-perspective_6c961094-4aad-49ae-828d-87814ef00f55_small.jpg%20") no-repeat center center/cover;
+}
+.mainheader::before{
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+.navbar{
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px;
+    background-color: transparent;
+}
+.navbar h1{
+    font-size: 40px;
+    font-weight: 800;
+    color: var(--btn-color);
+    background-color: transparent;
+}
+.btn{
+    padding: 15px 20px;
+    background-color: var(--btn-color);
+    color: var(--btn-text-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border: 1px solid var(--btn-color);
+}
+/* header section 2nd */
+.content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 20vh);
+}
+.content h1{
+    font-size: 60px;
+    width: 45%;
+    text-align: center;
+    font-weight: 800;
+    margin-bottom: 10px;
+    color: var(--btn-text-color);
+}
+.content h2{
+    font-size: 24px;
+    color: white;
+    font-weight: 800;
+    margin-bottom: 10px;
+    color: var(--btn-text-color);
+}
+.content p{
+    font-size: 20px;
+    margin: 10px 0px;
+    font-weight: 400;
+    color: var(--btn-text-color);
+}
+form{
+    display: block;
+}
+.content button{
+    padding: 10px 20px;
+    background-color: var(--btn-transparent);
+    color: var(--btn-text-color);
+    border: none;
+    display: inline-block;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border: 1px solid var(--btn-text-color);
+}
+.content button:hover{
+    background-color: var(--btn-color);
+    border: 1px solid var(--btn-color);
+}
+.email{
+    padding: 15px 10px;
+    margin: 10px 0px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    background-color: var(--btn-transparent);
+    color: var(--btn-text-color);
+    border: 1px solid var(--btn-text-color);
+    width: 450px;
+
+}
+
