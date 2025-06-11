@@ -25,7 +25,7 @@ function Header() {
                         <IoCartOutline className="w-6 h-6" />
                         <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">3</span>
                     </NavLink>
-                    <NavLink to="/register" className="p-2 text-gray-700 hover:text-blue-600 transition-colors">
+                    <NavLink to="/auth" className="p-2 text-gray-700 hover:text-blue-600 transition-colors">
                         <GrLogin className="w-6 h-6"></GrLogin>
                     </NavLink>
                 </div>
