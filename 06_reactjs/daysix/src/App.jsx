@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { Routes, Route } from "react-router-dom";
 import CartPage from "./Pages/CartPage";
 import HomePage from "./Pages/HomePage";
@@ -13,8 +14,13 @@ import ForgetPassword from "./Pages/auth/ForgetPassword";
 import Learn from "./learn/Learn";
 
 function App() {
+  const ref = useRef();
+  const GoBacktotTop = ()=>{
+    ref.current.scrollIntoView({behavior:"smooth"})
+  }
   return (
-    <div>
+    <>
+    <div ref={ref}></div>
       <Routes>
         <Route path="/" element={ <FrontendUser /> }>
           <Route index element={<HomePage />} />
@@ -32,8 +38,8 @@ function App() {
         <Route path="*" element={<Error /> } />
         <Route path="learn" element={<Learn /> } />
       </Routes>
-      
-    </div>
+      <button onClick={GoBacktotTop}>Go back to top</button>
+    </>
   );
 }
 
