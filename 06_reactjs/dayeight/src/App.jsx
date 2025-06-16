@@ -12,6 +12,7 @@ import LoginPage from "./Pages/auth/LoginPage";
 import RegisterPage from "./Pages/auth/RegisterPage";
 import ForgetPassword from "./Pages/auth/ForgetPassword";
 import Learn from "./learn/Learn";
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   const ref = useRef();
@@ -21,6 +22,7 @@ function App() {
   return (
     <>
     <div ref={ref}></div>
+      <ToastContainer />
       <Routes>
         <Route path="/" element={ <FrontendUser /> }>
           <Route index element={<HomePage />} />

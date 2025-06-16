@@ -1,21 +1,23 @@
-import { use } from "react";
-import {useState, useEffect} from "react";
-import axios from "axios";
+// import {useState, useEffect} from "react";
+// import axios from "axios";
 import {useParams} from "react-router-dom";
+import Quantity from "../Components/Quantity";
+import ApiFetch from "../learn/CustomHooks/ApiFetch";
 
 function ProductPage() {
     const {id} = useParams();
-    const [data, SetData] = useState({});
-    const [loading, setLoading] = useState(true);
+    // const [data, SetData] = useState({});
+    // const [loading, setLoading] = useState(true);
 
-    useEffect(()=>{
-        const fetchData = async()=>{
-            let datas = await axios.get(`https://fakestoreapi.com/products/${id}`);
-            SetData(datas.data);
-            setLoading(false);
-        }
-        fetchData();
-    },[])
+    // useEffect(()=>{
+    //     const fetchData = async()=>{
+    //         let datas = await axios.get(`https://fakestoreapi.com/products/${id}`);
+    //         SetData(datas.data);
+    //         setLoading(false);
+    //     }
+    //     fetchData();
+    // },[id]);
+    const{data, loading, error} = ApiFetch(`https://fakestoreapi.com/products/${id}`);
 
     if(loading){
         return <div>Loading...</div>
@@ -90,18 +92,7 @@ function ProductPage() {
                     </div>
                 </div>
 
-                <div class="mb-6">
-                    <h3 class="text-lg font-semibold mb-2">Quantity</h3>
-                    <div class="flex items-center space-x-3">
-                        <button class="w-10 h-10 border border-gray-300 rounded-lg flex items-center justify-center hover:bg-gray-50" >
-                            <i data-lucide="minus" class="w-4 h-4"></i>
-                        </button>
-                        <span id="quantity" class="text-xl font-semibold">1</span>
-                        <button class="w-10 h-10 border border-gray-300 rounded-lg flex items-center justify-center hover:bg-gray-50" >
-                            <i data-lucide="plus" class="w-4 h-4"></i>
-                        </button>
-                    </div>
-                </div>
+                <Quantity />
 
                 <div class="flex space-x-4 mb-6">
                     <button class="flex-1 bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors">

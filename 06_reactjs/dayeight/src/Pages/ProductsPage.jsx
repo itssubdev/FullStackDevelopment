@@ -1,32 +1,40 @@
-import {useState, useEffect} from "react";
-import axios from "axios";
+// import {useState, useEffect} from "react";
+// import axios from "axios";
 import { Link } from "react-router-dom";
+import ApiFetch from "../learn/CustomHooks/ApiFetch";
 
 function ProductsPage() {
-    const [data, setData] = useState([]);
-    useEffect(()=>{
-        const fetchData = async() =>{
-            try{
-                let url = "https://fakestoreapi.com/products";
-                let originaldata = await axios.get(url);
-                setData(originaldata.data);
-            }catch(e){
-                console.log(e.message);
-            }
-        }
-        fetchData();
-        // const fetchData = async() =>{
-        //     try{
-        //         let url = "https://fakestoreapi.com/products";
-        //         let res = await fetch(url);
-        //         let originaldata = await res.json();
-        //         setData(originaldata);
-        //     }catch(e){
-        //         console.log(e.message);
-        //     }
-        // }
+    // const [data, setData] = useState([]);
+    // useEffect(()=>{
+    //     const fetchData = async() =>{
+    //         try{
+    //             let url = "https://fakestoreapi.com/products";
+    //             let originaldata = await axios.get(url);
+    //             setData(originaldata.data);
+    //         }catch(e){
+    //             console.log(e.message);
+    //         }
+    //     }
+    //     fetchData();
+    //     // const fetchData = async() =>{
+    //     //     try{
+    //     //         let url = "https://fakestoreapi.com/products";
+    //     //         let res = await fetch(url);
+    //     //         let originaldata = await res.json();
+    //     //         setData(originaldata);
+    //     //     }catch(e){
+    //     //         console.log(e.message);
+    //     //     }
+    //     // }
         
-    },[])
+    // },[])
+    const {data, loading, error} = ApiFetch("https://fakestoreapi.com/products");
+    if(loading){
+        return <h1>Loading...</h1>
+    }
+    if(error){
+        return <h1>Something went wrong.</h1>
+    }
 
   return <div>
     <div className="bg-white py-8 border-b">
