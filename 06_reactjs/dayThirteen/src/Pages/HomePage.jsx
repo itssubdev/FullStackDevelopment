@@ -1,7 +1,11 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 
 function HomePage() {
   return <div>
+    <Helmet>
+        <title>Home - EliteStore</title>
+    </Helmet>
     <section class="hero-gradient text-white py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
