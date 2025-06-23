@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - EliteStore</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+                        <i data-lucide="shopping-cart" class="w-5 h-5 text-white"></i>
+                    </div>
+                    <span class="text-xl font-bold text-gray-900">EliteStore</span>
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-blue-600 transition-colors">Home</a>
+                    <a href="products.html" class="text-gray-700 hover:text-blue-600 transition-colors">Products</a>
+                    <a href="categories.html" class="text-gray-700 hover:text-blue-600 transition-colors">Categories</a>
+                    <a href="blog.html" class="text-gray-700 hover:text-blue-600 transition-colors">Blog</a>
+                </nav>
+                <div class="flex items-center space-x-4">
+                    <a href="cart.html" class="relative p-2 text-blue-600 font-medium">
+                        <i data-lucide="shopping-cart" class="w-6 h-6"></i>
+                        <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">3</span>
+                    </a>
+                    <a href="login.html" class="p-2 text-gray-700 hover:text-blue-600 transition-colors">
+                        <i data-lucide="user" class="w-6 h-6"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <nav class="bg-white py-4 border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center space-x-2 text-sm">
+                <a href="index.html" class="text-gray-500 hover:text-blue-600">Home</a>
+                <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400"></i>
+                <span class="text-gray-900">Shopping Cart</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Cart Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <h1 class="text-3xl font-bold text-gray-900 mb-8">Shopping Cart</h1>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Cart Items -->
+            <div class="lg:col-span-2">
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <!-- Cart Item 1 -->
+                    <div class="p-6 border-b border-gray-200">
+                        <div class="flex items-center space-x-4">
+                            <img src="https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg?auto=compress&cs=tinysrgb&w=200" 
+                                 alt="Wireless Headphones" class="w-20 h-20 object-cover rounded-lg">
+                            <div class="flex-1">
+                                <h3 class="text-lg font-semibold text-gray-900">Premium Wireless Headphones</h3>
+                                <p class="text-gray-600">Color: Black</p>
+                                <div class="flex items-center mt-2">
+                                    <span class="text-xl font-bold text-gray-900">$299.99</span>
+                                    <span class="text-sm text-gray-500 line-through ml-2">$399.99</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <button class="w-8 h-8 border border-gray-300 rounded-lg flex items-center justify-center hover:bg-gray-50" onclick="updateQuantity(1, -1)">
+                                    <i data-lucide="minus" class="w-4 h-4"></i>
+                                </button>
+                                <span id="qty-1" class="text-lg font-semibold">2</span>
+                                <button class="w-8 h-8 border border-gray-300 rounded-lg flex items-center justify-center hover:bg-gray-50" onclick="updateQuantity(1, 1)">
+                                    <i data-lucide="plus" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-xl font-bold text-gray-900">$599.98</div>
+                                <button class="text-red-600 hover:text-red-800 mt-2" onclick="removeItem(1)">
+                                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cart Item 2 -->
+                    <div class="p-6 border-b border-gray-200">
+                        <div class="flex items-center space-x-4">
+                            <img src="https://images.pexels.com/photos/437037/pexels-photo-437037.jpeg?auto=compress&cs=tinysrgb&w=200" 
+                                 alt="Smart Watch" class="w-20 h-20 object-cover rounded-lg">
+                            <div class="flex-1">
+                                <h3 class="text-lg font-semibold text-gray-900">Smart Fitness Watch</h3>
+                                <p class="text-gray-600">Color: Silver</p>
+                                <div class="flex items-center mt-2">
+                                    <span class="text-xl font-bold text-gray-900">$199.99</span>
+                                    <span class="text-sm text-gray-500 line-through ml-2">$249.99</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <button class="w-8 h-8 border border-gray-300 rounded-lg flex items-center justify-center hover:bg-gray-50" onclick="updateQuantity(2, -1)">
+                                    <i data-lucide="minus" class="w-4 h-4"></i>
+                                </button>
+                                <span id="qty-2" class="text-lg font-semibold">1</span>
+                                <button class="w-8 h-8 border border-gray-300 rounded-lg flex items-center justify-center hover:bg-gray-50" onclick="updateQuantity(2, 1)">
+                                    <i data-lucide="plus" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-xl font-bold text-gray-900">$199.99</div>
+                                <button class="text-red-600 hover:text-red-800 mt-2" onclick="removeItem(2)">
+                                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cart Actions -->
+                    <div class="p-6">
+                        <div class="flex justify-between items-center">
+                            <a href="products.html" class="text-blue-600 hover:text-blue-800 font-medium">
+                                <i data-lucide="arrow-left" class="w-4 h-4 inline mr-2"></i>
+                                Continue Shopping
+                            </a>
+                            <button class="text-red-600 hover:text-red-800 font-medium" onclick="clearCart()">
+                                <i data-lucide="trash-2" class="w-4 h-4 inline mr-2"></i>
+                                Clear Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coupon Code -->
+                <div class="bg-white rounded-lg shadow-md p-6 mt-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Coupon Code</h3>
+                    <div class="flex space-x-4">
+                        <input type="text" placeholder="Enter coupon code" 
+                               class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                            Apply
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="lg:col-span-1">
+                <div class="bg-white rounded-lg shadow-md p-6 sticky top-24">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Order Summary</h3>
+                    
+                    <div class="space-y-3 mb-6">
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Subtotal (3 items)</span>
+                            <span class="font-semibold">$799.97</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Shipping</span>
+                            <span class="font-semibold">$9.99</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Tax</span>
+                            <span class="font-semibold">$64.00</span>
+                        </div>
+                        <div class="flex justify-between text-green-600">
+                            <span>Discount</span>
+                            <span>-$50.00</span>
+                        </div>
+                        <hr class="border-gray-200">
+                        <div class="flex justify-between text-lg font-bold">
+                            <span>Total</span>
+                            <span>$823.96</span>
+                        </div>
+                    </div>
+
+                    <button class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors mb-4">
+                        Proceed to Checkout
+                    </button>
+
+                    <div class="text-center text-sm text-gray-500 mb-4">
+                        <i data-lucide="shield-check" class="w-4 h-4 inline mr-1"></i>
+                        Secure checkout with SSL encryption
+                    </div>
+
+                    <!-- Payment Methods -->
+                    <div class="border-t pt-4">
+                        <p class="text-sm text-gray-600 mb-2">We accept:</p>
+                        <div class="flex space-x-2">
+                            <div class="w-8 h-6 bg-blue-600 rounded text-white text-xs flex items-center justify-center">VISA</div>
+                            <div class="w-8 h-6 bg-red-600 rounded text-white text-xs flex items-center justify-center">MC</div>
+                            <div class="w-8 h-6 bg-blue-800 rounded text-white text-xs flex items-center justify-center">AMEX</div>
+                            <div class="w-8 h-6 bg-yellow-500 rounded text-white text-xs flex items-center justify-center">PP</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recently Viewed -->
+        <div class="mt-16">
+            <h2 class="text-2xl font-bold text-gray-900 mb-8">You might also like</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&w=400" 
+                         alt="Camera Lens" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 mb-2">Professional Camera Lens</h3>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xl font-bold text-gray-900">$899.99</span>
+                            <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="https://images.pexels.com/photos/586996/pexels-photo-586996.jpeg?auto=compress&cs=tinysrgb&w=400" 
+                         alt="Office Chair" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 mb-2">Ergonomic Office Chair</h3>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xl font-bold text-gray-900">$449.99</span>
+                            <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="https://images.pexels.com/photos/2115257/pexels-photo-2115257.jpeg?auto=compress&cs=tinysrgb&w=400" 
+                         alt="Gaming Mouse" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 mb-2">Wireless Gaming Mouse</h3>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xl font-bold text-gray-900">$79.99</span>
+                            <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="https://images.pexels.com/photos/324028/pexels-photo-324028.jpeg?auto=compress&cs=tinysrgb&w=400" 
+                         alt="Coffee Maker" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 mb-2">Premium Coffee Maker</h3>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xl font-bold text-gray-900">$249.99</span>
+                            <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+                            <i data-lucide="shopping-cart" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span class="text-xl font-bold">EliteStore</span>
+                    </div>
+                    <p class="text-gray-400">Your trusted partner for premium products.</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="products.html" class="text-gray-400 hover:text-white">Products</a></li>
+                        <li><a href="categories.html" class="text-gray-400 hover:text-white">Categories</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-4">Customer Service</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">FAQ</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Returns</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-4">Contact Info</h3>
+                    <p class="text-gray-400">123 Store Street, City, State 12345</p>
+                    <p class="text-gray-400">(555) 123-4567</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        function updateQuantity(itemId, change) {
+            const qtyElement = document.getElementById(`qty-${itemId}`);
+            let currentQty = parseInt(qtyElement.textContent);
+            let newQty = currentQty + change;
+            
+            if (newQty < 1) newQty = 1;
+            
+            qtyElement.textContent = newQty;
+            // Here you would typically update the total price as well
+        }
+
+        function removeItem(itemId) {
+            if (confirm('Are you sure you want to remove this item from your cart?')) {
+                // Here you would remove the item from the cart
+                alert('Item removed from cart');
+            }
+        }
+
+        function clearCart() {
+            if (confirm('Are you sure you want to clear your entire cart?')) {
+                // Here you would clear all items from the cart
+                alert('Cart cleared');
+            }
+        }
+    </script>
+</body>
+</html>
