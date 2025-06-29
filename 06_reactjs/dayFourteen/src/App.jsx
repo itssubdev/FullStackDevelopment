@@ -13,6 +13,7 @@ import RegisterPage from "./Pages/auth/RegisterPage";
 import ForgetPassword from "./Pages/auth/ForgetPassword";
 import Learn from "./learn/Learn";
 import { ToastContainer } from 'react-toastify';
+import CheckoutPage from "./Pages/CheckoutPage";
 
 function App() {
   const ref = useRef();
@@ -35,6 +36,7 @@ function App() {
             <Route path="category" element={<CategoryPage />} />
             <Route path="cart" element={<CartPage />} />
             <Route path="blog" element={<h1>Blog</h1>} />
+            <Route path="checkout" element = {<CheckoutPage />} />
           </Route>
           <Route path="auth" element={<AuthPage />}>
             <Route index element={<LoginPage />} />

@@ -7,10 +7,10 @@ import { CartContext } from "../learn/ContextApi/AddTOCArt/CartContext";
 import { useQuery } from "@tanstack/react-query";
 import { FaCartArrowDown } from "react-icons/fa";
 import { FaStar } from "react-icons/fa";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/slice/CartSlice";
 function ProductsPage() {
-    const {AddtoCartFn} = useContext(CartContext);
+    // const {AddtoCartFn} = useContext(CartContext);
     const dispatch = useDispatch();
 
 

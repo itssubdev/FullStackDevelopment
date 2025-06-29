@@ -4,11 +4,9 @@ import { IoCartOutline } from "react-icons/io5";
 import { GrLogin } from "react-icons/gr";
 import { FaBarsStaggered } from "react-icons/fa6";
 import ToggleBar from "../Components/ToggleBar";
-import { useDispatch, useSelector } from "react-redux";
-import { totalItems } from "../redux/slice/CartSlice";
+import { useSelector } from "react-redux";
 
 function Header() {
-    const dispatch = useDispatch();
     const items = useSelector((state) => state.cart.totalItems);
     const [toggle, setToggle] = useState(false);
     function ToggleMenu(){

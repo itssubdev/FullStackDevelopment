@@ -15,20 +15,30 @@ const calculateTotals = (cartItems) =>{
             const itemTotal = item.price * item.quantity;
             acc.totalPrice += itemTotal;
             acc.totalQuantity += item.quantity;
-            acc.totalItems += 1;
             return acc;
         }, {
             totalPrice: 0,
             totalQuantity: 0,
         }
     )
-    return total
+    total.totalItems = cartItems.length
+    return total;
 }
+const initialCartItems = getInitialCarts();
+const initialTotals = calculateTotals(initialCartItems);
 const initialState = {
-    cartItems: getInitialCarts(),
-    totalQuantity: 0,
-    totalPrice: 0, 
-    totalItems: 0
+    cartItems: initialCartItems,
+    totalQuantity: initialTotals.totalQuantity,
+    totalPrice: initialTotals.totalPrice, 
+    totalItems: initialTotals.totalItems
+}
+
+const UpdateStateAndSave = (state) => {
+    const {totalQuantity, totalPrice, totalItems} = calculateTotals(state.cartItems);
+    state.totalQuantity = totalQuantity;
+    state.totalPrice = totalPrice;
+    state.totalItems = totalItems;
+    saveCartToStorage(state.cartItems);
 }
 
 const cartSlice = createSlice({
@@ -43,12 +53,7 @@ const cartSlice = createSlice({
             }else{
                 state.cartItems.push({...product, quantity: 1});
             }
-
-            const total = calculateTotals(state.cartItems);
-            state.totalQuantity = total.totalQuantity;
-            state.totalPrice = total.totalPrice;
-            state.totalItems = total.totalItems;
-            saveCartToStorage(state.cartItems);
+            UpdateStateAndSave(state);
         },
         incrementQty:(state, action)=>{
             const id = action.payload;
@@ -56,11 +61,7 @@ const cartSlice = createSlice({
             if(item){
                 item.quantity += 1;
             }
-            const total = calculateTotals(state.cartItems);
-            state.totalQuantity = total.totalQuantity;
-            state.totalPrice = total.totalPrice;
-            state.totalItems = total.totalItems;
-            saveCartToStorage(state.cartItems);
+            UpdateStateAndSave(state);
             
         },
         decrementQty:(state, action)=>{
@@ -72,12 +73,7 @@ const cartSlice = createSlice({
                     state.cartItems = state.cartItems.filter(item => item.id !== id);
                 }
             }
-            const total = calculateTotals(state.cartItems);
-            state.totalQuantity = total.totalQuantity;
-            state.totalPrice = total.totalPrice;
-            state.totalItems = total.totalItems;
-            saveCartToStorage(state.cartItems);
-            
+            UpdateStateAndSave(state);
         },
         removeItem:(state, action)=>{
             const id = action.payload;
@@ -85,12 +81,7 @@ const cartSlice = createSlice({
             if(item){
                 state.cartItems = state.cartItems.filter(item => item.id !== id);
             }
-            const total = calculateTotals(state.cartItems);
-            state.totalQuantity = total.totalQuantity;
-            state.totalPrice = total.totalPrice;
-            state.totalItems = total.totalItems;
-            saveCartToStorage(state.cartItems);
-            
+            UpdateStateAndSave(state);
         },
         clearCart:(state)=>{
             state.cartItems = [];
@@ -101,16 +92,13 @@ const cartSlice = createSlice({
         }
     }
 })
-
+// only function
 export const { 
     addToCart, 
     incrementQty, 
     decrementQty, 
     removeItem, 
-    clearCart, 
-    totalPrice, 
-    totalQuantity, 
-    totalItems
+    clearCart
+} = cartSlice.actions;
 
- } = cartSlice.actions;
 export default cartSlice.reducer;

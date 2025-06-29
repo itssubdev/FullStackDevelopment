@@ -1,10 +1,12 @@
 import React, {useContext} from "react";
-import { CartContext } from "../learn/ContextApi/AddTOCArt/CartContext";
+// import { CartContext } from "../learn/ContextApi/AddTOCArt/CartContext";
 import { useSelector, useDispatch } from "react-redux";
-import { removeItem, incrementQty, decrementQty, totalItems, totalPrice, clearCart } from "../redux/slice/CartSlice";
+import { removeItem, incrementQty, decrementQty, clearCart } from "../redux/slice/CartSlice";
+import { Link } from "react-router-dom";
 function CartPage() {
     const dispatch = useDispatch();
-    // const {data, IncrementQty, DecrementQty, RemoveItems, getTotalPrice} = useContext(CartContext);
+    const {cartItems,totalQuantity, totalPrice} = useSelector((state) => state.cart);
+
   return <div>
     <nav className="bg-white py-4 border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -19,7 +21,7 @@ function CartPage() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <h1 className="text-3xl font-bold text-gray-900 mb-8">Shopping Cart</h1>
 
-        { data.length ==0 ? <>
+        { cartItems.length == 0 ? <>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2">
                 <div className="bg-white rounded-lg shadow-md overflow-hidden">
@@ -32,7 +34,7 @@ function CartPage() {
             <div className="lg:col-span-2">
                 <div className="bg-white rounded-lg shadow-md overflow-hidden">
                     {
-                        data.map((items) =>{
+                        cartItems.map((items) =>{
                             return <div key={items.id} className="p-6 border-b border-gray-200">
                         <div className="flex items-center space-x-4">
                             <img src= {items.image}
@@ -43,7 +45,7 @@ function CartPage() {
                                 <div className="flex items-center mt-2 flex gap-4">
                                     <span className="text-xl font-bold text-gray-900">${items.price}</span>
                                     <div className="flex items-center space-x-3">
-                                    <button onClick={()=> RemoveItems(items.id)} className="text-red-600"  >
+                                    <button onClick={()=> dispatch(removeItem(items.id))} className="text-red-600"  >
                                         Remove
                                     </button>
                                
@@ -51,11 +53,11 @@ function CartPage() {
                                 </div>
                             </div>
                             <div className="flex items-center space-x-3">
-                                <button onClick={()=> DecrementQty(items.id)} className="w-8 h-8 border border-gray-300 rounded-lg flex items-center justify-center hover:bg-gray-50" >
+                                <button onClick={()=> dispatch(incrementQty(items.id))} className="w-8 h-8 border border-gray-300 rounded-lg flex items-center justify-center hover:bg-gray-50" >
                                     <i data-lucide="minus" className="w-4 h-4"></i>
                                 </button>
                                 <span id="qty-1" className="text-lg font-semibold">{items.quantity}</span>
-                                <button onClick={()=> IncrementQty(items.id)} className="w-8 h-8 border border-gray-300 rounded-lg flex items-center justify-center hover:bg-gray-50" >
+                                <button onClick={()=> dispatch(decrementQty(items.id))} className="w-8 h-8 border border-gray-300 rounded-lg flex items-center justify-center hover:bg-gray-50" >
                                     <i data-lucide="plus" className="w-4 h-4"></i>
                                 </button>
                             </div>
@@ -77,7 +79,7 @@ function CartPage() {
                                 <i data-lucide="arrow-left" className="w-4 h-4 inline mr-2"></i>
                                 Continue Shopping
                             </a>
-                            <button className="text-red-600 hover:text-red-800 font-medium" onclick="clearCart()">
+                            <button onClick={()=> dispatch(clearCart())} className="text-red-600 hover:text-red-800 font-medium" onclick="clearCart()">
                                 <i data-lucide="trash-2" className="w-4 h-4 inline mr-2"></i>
                                 Clear Cart
                             </button>
@@ -85,16 +87,7 @@ function CartPage() {
                     </div>
                 </div>
 
-                <div className="bg-white rounded-lg shadow-md p-6 mt-6">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-4">Coupon Code</h3>
-                    <div className="flex space-x-4">
-                        <input type="text" placeholder="Enter coupon code" 
-                               className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
-                        <button className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">
-                            Apply
-                        </button>
-                    </div>
-                </div>
+                
             </div>
 
             <div className="lg:col-span-1">
@@ -103,8 +96,8 @@ function CartPage() {
                     
                     <div className="space-y-3 mb-6">
                         <div className="flex justify-between">
-                            <span className="text-gray-600">Subtotal ({data.length})</span>
-                            <span className="font-semibold">${getTotalPrice()}</span>
+                            <span className="text-gray-600">Subtotal ({totalQuantity})</span>
+                            <span className="font-semibold">${totalPrice}</span>
                         </div>
                         <div className="flex justify-between">
                             <span className="text-gray-600">Shipping</span>
@@ -117,13 +110,13 @@ function CartPage() {
                         <hr className="border-gray-200" />
                         <div className="flex justify-between text-lg font-bold">
                             <span>Total</span>
-                            <span>${getTotalPrice() + 9.99 + 64}</span>
+                            <span>${totalPrice + 9.99 + 64}</span>
                         </div>
                     </div>
 
-                    <button className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors mb-4">
+                    <Link to="/checkout" className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors mb-4">
                         Proceed to Checkout
-                    </button>
+                    </Link>
 
                     <div className="text-center text-sm text-gray-500 mb-4">
                         <i data-lucide="shield-check" className="w-4 h-4 inline mr-1"></i>
