@@ -12,4 +12,13 @@ print(tuple1.index(2)) # common value ka index print garxa
 tuple2 = (1,2,3,4,5, 6, 7,8, 9, 10)
 for i in tuple2:
     print(i)
+tuple2 = (1,2,3,4,5, 6, 7,8, 9, 10)
+
+list1 = list(tuple2)
+list1.append(11)
+print(list1)
+tuple3 = tuple(list1)
+print(tuple3)
+print(type(tuple3))
+
 # wap to print the sum of total number in a tuple 3 = (1,2,3,4,5, 6, 7,8, 9, 10) = 55 also using for loop and while loop 

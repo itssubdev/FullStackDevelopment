@@ -54,7 +54,7 @@ match days:
 # 3. wap to check if the given number is armstrong or not
 # 4. wap to check if the given number is palindrome or not
 # 5. wap to check if the given number is perfect or not
-# 6. wap to check if the given number is fibonacci or not
+# 6. wap to check if the given number is fibonacci for loop 
 # 7. wap to check if the given number is perfect square or not
 # 8. wap to program to check the given marks of the user and grade them accordingly
 # 9. wap to check which day is today using elif
