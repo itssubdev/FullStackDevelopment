@@ -90,5 +90,13 @@ def recursions(n):
 
 recursions(5)
 
+# wap to print the mutiplication table using recursion of 5
+# wap to print the table of 5 using for loop
+# wap to print all the odd number between 1 to 100
+# wap to print all the even number between 1 to 100
+# wap to print the prime number between 1 to 100
+# wap to print the fibonacci series 10
+# wap to print the factorial of a number using recursion
+
 
 
