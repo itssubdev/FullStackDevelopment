@@ -1,0 +1,10 @@
+hello world 
+how are you 
+i am fine
+from 1st file 
+add the details to second file 
+name = shishir
+age = 27
+gender = male
+
+from class morning 8:10 time class stats and end 
