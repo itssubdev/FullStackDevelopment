@@ -1,7 +1,4 @@
 from django.db import models
-
-# Create your models here.
-from django.db import models
 from django.utils.text import slugify
 # oop -> Class or Interface -> Model -> Sql -> ORM -> Database 
 # ORM -> Object Relational Mapping
@@ -16,7 +13,7 @@ class Category(models.Model):
         self.slug = slugify(self.title)
         super(Category, self).save(*args, **kwargs)
 
-    def _str_(self):
+    def __str__(self):
         return self.title 
 
 class Tag(models.Model):
@@ -27,13 +24,15 @@ class Tag(models.Model):
         self.slug = slugify(self.title)
         super(Tag, self).save(*args, **kwargs)
     
-    def _str_(self):
+    def __str__(self):
         return self.title
 
 class Blog(models.Model):
     title = models.CharField(max_length=255)
     small_content = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, unique=True, null=True, blank=True)
+    home_page_show = models.BooleanField(default=False)
+    featured_blog = models.BooleanField(default=False)
     img = models.ImageField(upload_to="blog/", null=True, blank=True)
     content = models.TextField()
     tag = models.ManyToManyField(Tag)
@@ -41,11 +40,7 @@ class Blog(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    def save(self, *args, **kwargs):
-        self.slug = slugify(self.title)
-        super(Blog, self).save(*args, **kwargs)
-    
-    def _str_(self):
+    def __str__(self):
         return self.title
 
 class Comment(models.Model):
@@ -55,10 +50,10 @@ class Comment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    def _str_(self):
+    def __str__(self):
         return self.user
     
 # cmd -> activate
 # (env) -> pip install Pillow
 # (env) -> python manage.py makemigration
-# (env) -> python manage.py migrate
+# (env) -> python manage.py migrate

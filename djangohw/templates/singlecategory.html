@@ -1,0 +1,103 @@
+{% extends 'base/base.html' %}
+{% block content %}
+
+    <!-- Blog Header -->
+    <section class="bg-white dark:bg-gray-900 py-16">
+      <div class="container mx-auto text-center">
+        <h1>Blog</h1>
+        <p class="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          Explore our latest articles, tutorials, and insights on design, development, and technology.
+        </p>
+      </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="py-8 bg-gray-50 dark:bg-gray-800">
+      <div class="container-custom">
+        <div class="flex flex-wrap justify-center gap-4">
+            <button class="px-4 py-2 rounded-full bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">All</button>
+          {% for categorys in category %}
+            <button class="px-4 py-2 rounded-full bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">{{ categorys.title }}</button>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <!-- Search -->
+    <section class="py-8 bg-white dark:bg-gray-900">
+      <div class="container-custom max-w-2xl">
+        <div class="relative">
+          <input 
+            type="text" 
+            placeholder="Search articles..." 
+            class="w-full px-4 py-2 pl-10 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-500"
+          />
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Posts -->
+    <section class="py-16 bg-gray-50 dark:bg-gray-800">
+      <div class="container-custom">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {% for posts in blog%}
+          <article class="card animate-fade-in">
+            <img 
+              src="{{ posts.img.url }}" 
+              alt="People collaborating" 
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <span class="text-sm font-medium bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200 px-3 py-1 rounded-full">{{ posts.category.title }}</span>
+                <span class="ml-4 text-sm text-gray-500 dark:text-gray-400">{{ posts.created_at }}</span>
+              </div>
+              <h3 class="text-xl mb-3">{{ posts.title }}</h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                {{ posts.small_content }}
+              </p>
+              <a href="{% url 'singleblogpage' posts.id %}" class="text-primary-600 dark:text-primary-400 font-medium hover:text-primary-700 dark:hover:text-primary-300">Read More →</a>
+            </div>
+          </article>
+        {% endfor %}
+        </div>
+        
+        <!-- Pagination -->
+        <div class="flex justify-center mt-12">
+          <nav class="inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+            <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-sm font-medium text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700">
+              <span class="sr-only">Previous</span>
+              <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+            </a>
+            <a href="#" aria-current="page" class="relative inline-flex items-center px-4 py-2 border border-primary-500 bg-primary-50 dark:bg-primary-900 text-sm font-medium text-primary-600 dark:text-primary-300">
+              1
+            </a>
+            <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-sm font-medium text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700">
+              2
+            </a>
+            <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-sm font-medium text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700">
+              3
+            </a>
+            <span class="relative inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-sm font-medium text-gray-700 dark:text-gray-400">
+              ...
+            </span>
+            <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-sm font-medium text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700">
+              8
+            </a>
+            <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-sm font-medium text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700">
+              <span class="sr-only">Next</span>
+              <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+              </svg>
+            </a>
+          </nav>
+        </div>
+      </div>
+    </section>
+
+    {% endblock %}

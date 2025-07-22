@@ -1,0 +1,158 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+
+    <!-- Hero Section with Slider -->
+    <section class="bg-gradient-to-br from-primary-50 to-white dark:from-gray-800 dark:to-gray-900 py-16">
+      <div class="container-custom">
+        <div class="swiper h-[500px] rounded-xl overflow-hidden">
+          <div class="swiper-wrapper">
+            {% for slider in blogs %}
+            <div class="swiper-slide relative">
+              <img 
+                src="{{ slider.img.url }}" 
+                alt="Technology" 
+                class="w-full h-full object-cover"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/75 to-transparent flex items-end">
+                <div class="p-8 text-white">
+                  <span class="bg-primary-500 text-white px-3 py-1 rounded-full text-sm">{{ slider.category.title }}</span>
+                  <h2 class="text-3xl md:text-4xl mt-4 mb-2">{{ slider.title }}</h2>
+                  <p class="text-gray-200 mb-4">{{ slider.small_content }}</p>
+                  <a href="{% url 'singleblogpage' slider.id %}" class="btn-primary">Read More</a>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+            
+          </div>
+          
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Categories -->
+    <section class="py-16 bg-white dark:bg-gray-900">
+      <div class="container-custom">
+        <h2 class="text-center mb-12">Explore Categories</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {% for categories in category %}
+          <a href="/blog.html" class="group">
+            <div class="relative h-64 rounded-xl overflow-hidden">
+              <img 
+                src="{{ categories.img.url }}" 
+                alt="Technology" 
+                class="w-full h-full object-fill group-hover:scale-110 transition-transform duration-300"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/75 to-transparent flex items-end">
+                <div class="p-6 text-white">
+                  <h3 class="text-xl font-bold mb-2">{{ categories.title }}</h3>
+                </div>
+              </div>
+            </div>
+          </a>
+          {% endfor %}
+          
+         
+        </div>
+      </div>
+    </section>
+
+    <!-- Rest of the content remains the same -->
+    <!-- Featured Post -->
+    <section class="py-16 bg-gray-50 dark:bg-gray-800">
+      <div class="container mx-auto">
+        <h2 class="text-center mb-12">Featured Post</h2>
+        {% for post in feature_blog  %}
+        
+        <div class="card lg:flex animate-fade-in">
+          <div class="lg:w-1/2">
+            <img 
+              src="{{ post.img.url }}" 
+              alt="People collaborating" 
+              class="w-full h-full object-cover object-center"
+            />
+          </div>
+          <div class="lg:w-1/2 p-6 md:p-8 flex flex-col justify-center">
+            <div class="flex items-center mb-4">
+              <span class="text-sm font-medium bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200 px-3 py-1 rounded-full">{{ post.category.title }}</span>
+              <span class="ml-4 text-sm text-gray-500 dark:text-gray-400">{{ post.created_at }}</span>
+            </div>
+            <h3 class="text-2xl md:text-3xl mb-4">{{ post.title }}</h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-6">
+              {{ post.small_content }}
+            </p>
+            <a href="{% url 'singleblogpage' post.id %}" class="btn-primary self-start">Read More</a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <!-- Recent Posts -->
+    <section class="py-16 bg-white dark:bg-gray-900">
+      <div class="container-custom">
+        <div class="flex justify-between items-center mb-12">
+          <h2>Recent Posts</h2>
+          <a href="{% url 'blogpage' %}" class="btn-secondary">View All</a>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Post 1 -->
+          {% for posts in post %}
+            <article class="card animate-fade-in">
+            <img 
+              src="{{ posts.img.url }}" 
+              alt="Laptop with code" 
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <span class="text-sm font-medium bg-accent-100 text-accent-800 dark:bg-accent-900 dark:text-accent-200 px-3 py-1 rounded-full">{{posts.category.title}}</span>
+                <span class="ml-4 text-sm text-gray-500 dark:text-gray-400">{{ posts.created_at }}</span>
+              </div>
+              <h3 class="text-xl mb-3">{{ posts.title }}</h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                {{ posts.small_content }}
+              </p>
+              <a href="{% url 'singleblogpage' posts.id %}" class="text-primary-600 dark:text-primary-400 font-medium hover:text-primary-700 dark:hover:text-primary-300">Read More →</a>
+            </div>
+          </article>
+          {% endfor %}
+          
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-16  dark:bg-gray-800 flex items-center justify-center flex-col">
+      <div class="container-custom max-w-4xl">
+        <div class="bg-primary-50 dark:bg-gray-700 rounded-xl p-8 md:p-12 shadow-sm">
+          <div class="text-center mb-8">
+            <h2 class="text-primary-800 dark:text-primary-300">Subscribe to our newsletter</h2>
+            <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+              Get the latest articles, tutorials, and updates delivered straight to your inbox. No spam, ever.
+            </p>
+          </div>
+          <form class="max-w-md mx-auto">
+            <div class="flex flex-col sm:flex-row gap-4">
+              <input 
+                type="email" 
+                placeholder="Enter your email" 
+                class="flex-grow px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                required
+              />
+              <button type="submit" class="btn-primary whitespace-nowrap">
+                Subscribe
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+{% endblock %}

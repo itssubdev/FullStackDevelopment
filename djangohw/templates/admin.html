@@ -1,0 +1,78 @@
+{% extends 'base/base.html' %}
+{% block content %}
+<div class="max-w-4xl mx-auto p-6">
+    <h1 class="text-2xl font-bold mb-4">Total User Count: {{ usercount }}</h1>
+    <h1 class="text-xl font-semibold mb-6">Admin Panel</h1>
+
+    <div class="space-x-4 mb-6">
+        <a href="{% url 'admin:login' %}" 
+           class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded shadow">
+           Login
+        </a>
+        <a href="{% url 'admin:logout' %}" 
+           class="inline-block bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded shadow">
+           Logout
+        </a>
+    </div>
+
+    <div class="bg-red-300 p-4 mt-4 rounded shadow">
+        <h2 class="text-lg font-bold mb-3">Blog List</h2>
+        <ul class="list-disc list-inside space-y-2">
+            {% for blog in blogs %}
+                <li>
+                    <a href="{% url 'singleblogpage' blog.id %}" 
+                       class="text-blue-800 hover:underline font-medium">
+                       {{ blog.title }}
+                    </a>
+                </li>
+            {% empty %}
+                <li>No blogs found.</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="bg-green-300 p-4 mt-4 rounded shadow">
+        <h2 class="text-lg font-bold mb-3">Category List</h2>
+        <ul class="list-disc list-inside space-y-2">
+            {% for cat in categories %}
+                <li>{{ cat.title }}</li>
+            {% empty %}
+                <li>No categories found.</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="bg-green-300 p-4 mt-4 rounded shadow">
+        <h2 class="text-lg font-bold mb-3">User List</h2>
+        <ul class="list-disc list-inside space-y-2">
+            {% for user in users %}
+                <li>{{ user.email }}</li>
+            {% empty %}
+                <li>No users found.</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="bg-yellow-200 p-4 mt-4 rounded shadow">
+        <h2 class="text-lg font-bold mb-3">Comments</h2>
+        <ul class="list-disc list-inside space-y-2">
+            {% for comment in comments %}
+                <li>{{ comment.content }}</li>
+            {% empty %}
+                <li>No comments found.</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="bg-purple-200 p-4 mt-4 rounded shadow">
+        <h2 class="text-lg font-bold mb-3">Contacts</h2>
+        <ul class="list-disc list-inside space-y-2">
+            {% for contact in contacts %}
+                <li>{{ contact.name }} ({{ contact.email }}) — {{ contact.message }}</li>
+            {% empty %}
+                <li>No contact submissions yet.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}
